@@ -1,4 +1,5 @@
 .yoga-container {
+    background: linear-gradient(100deg, #FF8C00, #FFA500);
     min-width: 100vw;
     min-height: 100vh;
 }

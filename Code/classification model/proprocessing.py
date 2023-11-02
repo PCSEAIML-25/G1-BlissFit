@@ -1,11 +1,11 @@
 import tensorflow as tf
 import numpy as np
-import pandas as pd
+import pandas as pd 
 import os
 from movenet import Movenet
 import wget
 import csv
-import tqdm
+import tqdm 
 from data import BodyPart
 
 if('movenet_thunder.tflite' not in os.listdir()):
@@ -17,14 +17,17 @@ def detect(input_tensor, inference_count=3):
     movenet.detect(input_tensor.numpy(), reset_crop_region=True)
     
     for _ in range(inference_count - 1):
-        detection = movenet.detect(input_tensor.numpy(), reset_crop_region=False)
+        detection = movenet.detect(input_tensor.numpy(), 
+                                reset_crop_region=False)
+    
     return detection
 
 class Preprocessor(object):
 #     this class preprocess pose samples, it predicts keypoints on the images 
 #     and save those keypoints in a csv file for the later use in the classification task 
 
-        def __init__(self, images_in_folder, csvs_out_path):
+        def __init__(self, images_in_folder,
+                    csvs_out_path):
             self._images_in_folder = images_in_folder
             self._csvs_out_path = csvs_out_path
             self._csvs_out_folder_per_class = 'csv_per_pose'
